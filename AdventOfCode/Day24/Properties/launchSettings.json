@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Day24": {
+      "commandName": "Project",
+      "commandLineArgs": "c:\\git\\mootalk\\advent-of-code\\AdventOfCode\\Day24\\input.txt"
+    }
+  }
+}
