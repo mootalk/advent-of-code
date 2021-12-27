@@ -22,7 +22,8 @@ namespace Day24
                     if (currentProgram.Length > 0)
                     {
                         monadProgramModules.Add(currentProgram.ToString());
-                        currentProgram = new("inp z");
+                        currentProgram = new();
+                        currentProgram.AppendLine("inp z");
                     }
                     else
                     {
@@ -87,7 +88,6 @@ namespace Day24
                 if (z == 0)
                 {
                     return currentNumber;
-
                 }
                 else
                 {
@@ -99,16 +99,10 @@ namespace Day24
 
             foreach (var digit in Digits)
             {
-
-                int[] arguments;
-                if (previousModule is not null)
-                {
-                    arguments = new[] { previousModule.GetVariableValue('z'), digit };
-                }
-                else
-                {
-                    arguments = new int[] { digit };
-                }
+                var nextNumber = GetNextNumber(digit);
+                int[] arguments = previousModule is not null
+                    ? new[] { previousModule.GetVariableValue('z'), digit }
+                    : new int[] { digit };
 
                 module.Run(arguments);
                 var x = module.GetVariableValue('x');
@@ -117,7 +111,7 @@ namespace Day24
                 {
                     if (x == 0)
                     {
-                        var next1 = FindNext(position + 1, AddToNumber(digit));
+                        var next1 = FindNext(position + 1, nextNumber);
                         if (next1 != null)
                         {
                             return next1;
@@ -127,7 +121,7 @@ namespace Day24
                     continue;
                 }
 
-                var next = FindNext(position + 1, AddToNumber(digit));
+                var next = FindNext(position + 1, nextNumber);
                 if (next != null)
                 {
                     return next;
@@ -136,7 +130,7 @@ namespace Day24
 
             return null;
 
-            sbyte[] AddToNumber(sbyte digit)
+            sbyte[] GetNextNumber(sbyte digit)
             {
                 var result = new sbyte[currentNumber.Length + 1];
                 currentNumber.CopyTo(result, 0);
