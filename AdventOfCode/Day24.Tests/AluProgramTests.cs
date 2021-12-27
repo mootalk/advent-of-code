@@ -57,9 +57,21 @@ mul z 1
         public void TestFile()
         {
             var programCode = File.ReadAllText(@"c:\git\mootalk\advent-of-code\AdventOfCode\Day24\input.txt");
-            var program = AluProgram.Parse(programCode, isTraceEnabled:true, _testTracer);
+            var program = AluProgram.Parse(programCode, isTraceEnabled: true, _testTracer);
 
-            program.Run(9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9);
+            program.Run(7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7);
+
+            program.Run(7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7);
+
+            program.Run(7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7);
+
+            program.Run(7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7);
+
+            program.Run(7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7);
+
+            program.Run(7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7);
+
+            program.Run(7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7);
         }
     }
 }

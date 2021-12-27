@@ -57,7 +57,7 @@ namespace Day24.Instructions
 
         public override void Execute()
         {
-            var result = Variable.Value;
+            var result = 0;
             foreach (var argument in Arguments)
             {
                 result += argument.Value;
