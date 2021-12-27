@@ -7,18 +7,32 @@ namespace Day24
     public class AluProgram
     {
         private readonly IDictionary<char, Variable> _variables;
-        private readonly IReadOnlyList<Instruction> _instructions;
+        public IReadOnlyList<Instruction> Instructions { get; }
         private readonly InputReader _inputReader;
         private readonly bool _isTraceEnabled;
         private readonly ITracer? _tracer;
 
         private AluProgram(List<Instruction> instructions, IDictionary<char, Variable> variables, InputReader inputReader, bool isTraceEnabled, ITracer? tracer)
         {
-            _instructions = instructions;
+            Instructions = instructions;
             _variables = variables;
             _inputReader = inputReader;
             _isTraceEnabled = isTraceEnabled;
             _tracer = tracer;
+        }
+
+        public bool HasInstruction<TInstruction>()
+            where TInstruction : Instruction
+        {
+            foreach (var instruction in Instructions)
+            {
+                if (instruction is TInstruction)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public int GetVariableValue(char variableRef)
@@ -27,12 +41,12 @@ namespace Day24
             return variable.Value;
         }
 
-        public void Run(params sbyte[] input)
+        public void Run(params int[] input)
         {
             Reset();
             _inputReader.SetInput(input);
 
-            foreach (var instruction in _instructions)
+            foreach (var instruction in Instructions)
             {
                 if (_isTraceEnabled)
                 {

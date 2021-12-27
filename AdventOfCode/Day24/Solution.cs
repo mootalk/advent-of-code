@@ -5,7 +5,7 @@ namespace Day24
 {
     public static class Solution
     {
-        private static readonly BlockingCollection<IEnumerable<sbyte[]>> Queue = new(100);
+        private static readonly BlockingCollection<IEnumerable<int[]>> Queue = new(100);
         private static Timer? StatsUpdater = null;
 
         public static string? FindLargestMonadNumberMultiThreaded(string monadProgramCode)
@@ -14,7 +14,7 @@ namespace Day24
             long count = 1;
             long absBest = int.MaxValue;
 
-            var results = new List<sbyte[]>();
+            var results = new List<int[]>();
 
             var threads = new List<Task>();
             for (int i = 0; i < 10; i++)

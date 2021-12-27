@@ -21,5 +21,8 @@
 
         public override int GetHashCode()
             => Reference.GetHashCode();
+
+        public override string ToString()
+            => $"{Reference}={Value}";
     }
 }

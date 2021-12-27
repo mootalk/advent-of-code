@@ -5,7 +5,7 @@
         private const long MaxNumber = 99_999_999_999_999;
         private const long MinNumber = 11_111_111_111_111;
 
-        public static IEnumerable<sbyte[]> AllFromLargestFirst()
+        public static IEnumerable<int[]> AllFromLargestFirst()
         {
             var current = MaxNumber;
             while (current >= MinNumber)
@@ -18,7 +18,7 @@
                 }
             }
 
-            static bool ContainsZero(sbyte[] array)
+            static bool ContainsZero(int[] array)
             {
                 foreach (var digit in array)
                 {
@@ -32,13 +32,13 @@
             }
         }
 
-        public static sbyte[] CreateArray(long number)
+        public static int[] CreateArray(long number)
         {
-            var array = new sbyte[14];
+            var array = new int[14];
             var currentPosition = 13;
             while (number > 0)
             {
-                array[currentPosition--] = (sbyte)(number % 10);
+                array[currentPosition--] = (int)number % 10;
                 number /= 10;
             }
 

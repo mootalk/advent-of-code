@@ -2,10 +2,10 @@
 {
     public class InputReader
     {
-        private sbyte[] _input = Array.Empty<sbyte>();
+        private int[] _input = Array.Empty<int>();
         private int _index;
 
-        public void SetInput(sbyte[] input)
+        public void SetInput(int[] input)
         {
             _input = input;
             _index = 0;
