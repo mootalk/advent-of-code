@@ -34,16 +34,16 @@ namespace Day24
 
             foreach (var instruction in _instructions)
             {
-                //if (_isTraceEnabled)
-                //{
-                //    var instructionLine = instruction.InstructionLine.Format();
-                //    instruction.Execute();
-                //    _tracer!.Trace($"{instructionLine} = {instruction.Variable.Value}");
-                //}
-                //else
-                //{
-                instruction.Execute();
-                //}
+                if (_isTraceEnabled)
+                {
+                    var instructionLine = instruction.InstructionLine.Format();
+                    instruction.Execute();
+                    _tracer!.Trace($"{instructionLine} = {instruction.Variable.Value}");
+                }
+                else
+                {
+                    instruction.Execute();
+                }
             }
         }
 

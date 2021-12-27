@@ -1,20 +1,9 @@
-using System.IO;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Day24.Tests
 {
     public class AluProgramTests
     {
-        private readonly ITestOutputHelper _testOutput;
-        private readonly ITracer _testTracer;
-
-        public AluProgramTests(ITestOutputHelper testOutput)
-        {
-            _testOutput = testOutput;
-            _testTracer = new TestOutputTracer(_testOutput);
-        }
-
         [Fact]
         public void AluProgram_knows_all_instructions()
         {
@@ -51,27 +40,6 @@ mul z 1
             Assert.Equal(0, program.GetVariableValue('x'));
             Assert.Equal(0, program.GetVariableValue('y'));
             Assert.Equal(0, program.GetVariableValue('z'));
-        }
-
-        [Fact]
-        public void TestFile()
-        {
-            var programCode = File.ReadAllText(@"c:\git\mootalk\advent-of-code\AdventOfCode\Day24\input.txt");
-            var program = AluProgram.Parse(programCode, isTraceEnabled: true, _testTracer);
-
-            program.Run(7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7);
-
-            program.Run(7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7);
-
-            program.Run(7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7);
-
-            program.Run(7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7);
-
-            program.Run(7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7);
-
-            program.Run(7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7);
-
-            program.Run(7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7);
         }
     }
 }
